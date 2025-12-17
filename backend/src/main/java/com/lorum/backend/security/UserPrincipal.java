@@ -1,0 +1,42 @@
+package com.lorum.backend.security;
+
+import com.lorum.backend.models.User;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import java.util.Collection;
+
+public class UserPrincipal implements UserDetails {
+
+    private final User user;
+
+    public UserPrincipal(User user) {
+        this.user = user;
+    }
+
+    public User getUser() { return this.user; }
+
+    @Override
+    public String getUsername() { return user.getEmail(); }
+
+    @Override
+    public boolean isAccountNonExpired() { return true; }
+
+    @Override
+    public boolean isAccountNonLocked() { return true; }
+
+    @Override
+    public boolean isCredentialsNonExpired() { return true; }
+
+    @Override
+    public boolean isEnabled() { return true; }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+    }
+
+    @Override
+    public String getPassword() {
+        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+    }
+}
