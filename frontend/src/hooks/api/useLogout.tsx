@@ -1,20 +1,24 @@
 import { useMutation } from '@tanstack/react-query';
-import api from '@/hooks/useAxios';
 import { useNavigate } from 'react-router';
-import type { RegisterSchema } from '@/types/schemas/register.schema.ts';
+import { useAuthStore } from '@store/auth.store.ts';
+import api from '@hooks/useAxios.ts';
 import { Endpoints } from '@types/enums/Endpoints.enum.ts';
 import { Routes } from '@types/enums/Routes.enum.ts';
 
-export function useRegister() {
+export function useLogout() {
   const navigate = useNavigate();
+  const { logout } = useAuthStore();
 
   return useMutation({
-    mutationFn: async (data: RegisterSchema) => {
-      const res = await api.post(Endpoints.REGISTER, data);
-      return res.data;
+    mutationFn: async () => {
+      await api.post(Endpoints.LOGOUT);
     },
     onSuccess: () => {
+      logout();
       navigate(Routes.LOGIN);
+    },
+    onError: () => {
+
     },
   });
 }
