@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useAuthStore } from '@store/auth.store.ts';
+import { Endpoints } from '@types/enums/Endpoints.enum.ts';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_BASE_API_URL,
@@ -13,7 +14,7 @@ api.interceptors.response.use(
     if (err.response?.status === 401 && !originalReq._retry) {
       originalReq._retry = true;
       try {
-        await api.post('/auth/refresh');
+        await api.post(Endpoints.REFRESH_TOKEN);
         return api(originalReq);
       } catch (refreshErr) {
         useAuthStore.getState().logout();
