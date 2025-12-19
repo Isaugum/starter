@@ -1,6 +1,5 @@
 SHELL := /bin/sh
 ENV_FILES := frontend/.env backend/.env
-
 .PHONY: dev env
 
 env:
@@ -16,11 +15,11 @@ env:
 		fi; \
 	done
 
-dev:
+dev: env
 	cd frontend && pnpm install && cd ..
 	docker compose -f docker-compose.dev.yml up --build
 
-prod:
+prod: env
 	docker compose -f docker-compose.yml up --build -d
 
 down:
