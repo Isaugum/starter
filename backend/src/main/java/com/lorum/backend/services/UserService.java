@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.lorum.backend.dtos.user.UserResponseDto;
 import com.lorum.backend.models.User;
 import com.lorum.backend.repositories.UserRepository;
 
@@ -24,6 +25,13 @@ public class UserService {
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email)
             .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    public UserResponseDto getUserDto(User user) {
+        return new UserResponseDto(
+            user.getUsername(),
+            user.getEmail()
+        );
     }
 
     public void createUser(String username, String email, String password) {

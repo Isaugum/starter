@@ -1,9 +1,12 @@
 package com.lorum.backend.security;
 
 import com.lorum.backend.models.User;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Collection;
+import java.util.List;
 
 public class UserPrincipal implements UserDetails {
 
@@ -32,7 +35,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+        return List.of();
     }
 
     @Override
