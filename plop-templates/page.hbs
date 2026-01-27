@@ -1,0 +1,23 @@
+{{#if protected}}
+import { ProtectedRoute } from '@components/modules/ProtectedRoute';
+{{/if}}
+
+export const {{pascalCase name}} = () => {
+{{#if protected}}
+  return (
+    <ProtectedRoute>
+      <div>
+        <h1>{{pascalCase name}}</h1>
+        {/* Page content */}
+      </div>
+    </ProtectedRoute>
+  );
+{{else}}
+  return (
+    <div>
+      <h1>{{pascalCase name}}</h1>
+      {/* Page content */}
+    </div>
+  );
+{{/if}}
+};

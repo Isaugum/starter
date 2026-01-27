@@ -1,0 +1,13 @@
+{{#if withProps}}
+interface {{pascalCase name}}Props {
+  // Add your props here
+}
+
+{{/if}}
+export const {{pascalCase name}}{{#if withProps}}: React.FC<{{pascalCase name}}Props>{{/if}} = ({{#if withProps}}{ /* destructure props */ }{{/if}}) => {
+  return (
+    <div>
+      {/* {{pascalCase name}} component */}
+    </div>
+  );
+};

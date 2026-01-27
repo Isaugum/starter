@@ -1,0 +1,31 @@
+{
+  "name": "lorum",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Activity Tracker - Full-stack monorepo",
+  "scripts": {
+    "dev": "make dev",
+    "prod": "make prod",
+    "down": "make down",
+    "clean": "make clean",
+    "logs": "make logs",
+    "generate": "plop",
+    "lint": "pnpm --filter frontend lint && cd backend && ./mvnw spotless:check",
+    "format": "pnpm --filter frontend format && cd backend && ./mvnw spotless:apply",
+    "type-check": "pnpm --filter frontend type-check",
+    "test": "pnpm --filter frontend test && cd backend && ./mvnw test",
+    "test:frontend": "pnpm --filter frontend test",
+    "test:backend": "cd backend && ./mvnw test",
+    "prepare": "lefthook install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "lefthook": "^1.10.8",
+    "plop": "^4.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

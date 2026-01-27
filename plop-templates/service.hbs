@@ -1,0 +1,41 @@
+package com.lorum.services;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class {{pascalCase name}}Service {
+
+    // Inject your repositories here
+
+    @Transactional(readOnly = true)
+    public Object findById(Long id) {
+        // TODO: Implement
+        log.info("Finding {{lowerCase name}} by id: {}", id);
+        return null;
+    }
+
+    @Transactional
+    public Object create(Object request) {
+        // TODO: Implement
+        log.info("Creating {{lowerCase name}}");
+        return null;
+    }
+
+    @Transactional
+    public Object update(Long id, Object request) {
+        // TODO: Implement
+        log.info("Updating {{lowerCase name}} with id: {}", id);
+        return null;
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        // TODO: Implement
+        log.info("Deleting {{lowerCase name}} with id: {}", id);
+    }
+}

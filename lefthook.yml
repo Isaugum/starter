@@ -1,0 +1,61 @@
+# Lefthook configuration for Lorum project
+# Install: npm install -g lefthook && lefthook install
+
+pre-commit:
+  parallel: true
+  commands:
+    # Frontend checks
+    frontend-lint:
+      root: "frontend/"
+      glob: "*.{ts,tsx,js,jsx}"
+      run: pnpm lint --fix {staged_files}
+      stage_fixed: true
+
+    frontend-format:
+      root: "frontend/"
+      glob: "*.{ts,tsx,js,jsx,json,css}"
+      run: pnpm exec prettier --write {staged_files}
+      stage_fixed: true
+
+    frontend-types:
+      root: "frontend/"
+      glob: "*.{ts,tsx}"
+      run: pnpm type-check
+
+    # Backend checks
+    backend-format:
+      root: "backend/"
+      glob: "*.java"
+      run: ./mvnw spotless:apply
+      stage_fixed: true
+
+  # Optional: Skip with LEFTHOOK=0 git commit
+  skip:
+    - merge
+    - rebase
+
+pre-push:
+  parallel: false
+  commands:
+    frontend-test:
+      root: "frontend/"
+      run: pnpm test
+
+    backend-test:
+      root: "backend/"
+      run: ./mvnw test
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx commitlint --edit {1}
+
+# Custom hooks
+post-checkout:
+  commands:
+    install-deps:
+      glob: "{package.json,pom.xml}"
+      run: |
+        echo "Dependencies changed, consider running:"
+        echo "  Frontend: cd frontend && pnpm install"
+        echo "  Backend: cd backend && ./mvnw clean install"
