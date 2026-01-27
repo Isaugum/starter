@@ -3,5 +3,6 @@ export enum Endpoints {
   REGISTER = 'auth/register',
   LOGOUT = 'auth/logout',
   CLEAR_SESSIONS = 'auth/logout-all',
-  REFRESH_TOKEN = 'auth/refresh'
+  REFRESH_TOKEN = 'auth/refresh',
+  USER = '/user'
 }

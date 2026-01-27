@@ -1,0 +1,10 @@
+package com.lorum.repositories;
+
+import com.lorum.models.{{pascalCase name}};
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface {{pascalCase name}}Repository extends JpaRepository<{{pascalCase name}}, Long> {
+    // Add custom query methods here
+}

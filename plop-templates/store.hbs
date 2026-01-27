@@ -1,0 +1,27 @@
+import { create } from 'zustand';
+{{#if withPersist}}
+import { persist } from 'zustand/middleware';
+{{/if}}
+
+interface {{pascalCase name}}State {
+  // Define your state here
+}
+
+interface {{pascalCase name}}Actions {
+  // Define your actions here
+}
+
+type {{pascalCase name}}Store = {{pascalCase name}}State & {{pascalCase name}}Actions;
+
+export const use{{pascalCase name}}Store = create{{#if withPersist}}<{{pascalCase name}}Store>()(
+  persist(
+    (set) => ({
+      // Initial state and actions
+    }),
+    {
+      name: '{{kebabCase name}}-storage',
+    }
+  )
+){{else}}<{{pascalCase name}}Store>((set) => ({
+  // Initial state and actions
+})){{/if}};

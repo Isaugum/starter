@@ -7,14 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class CookieService {
 
-    public String getCookie(HttpServletRequest request, String name) {
-        if (request.getCookies() == null) return null;
+  public String getCookie(HttpServletRequest request, String name) {
+    if (request.getCookies() == null) return null;
 
-        for (Cookie cookie : request.getCookies()) {
-            if (name.equals(cookie.getName())) {
-                return cookie.getValue();
-            }
-        }
-        return null;
+    for (Cookie cookie : request.getCookies()) {
+      if (name.equals(cookie.getName())) {
+        return cookie.getValue();
+      }
     }
+    return null;
+  }
 }

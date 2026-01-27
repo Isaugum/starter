@@ -1,0 +1,47 @@
+package com.lorum.controllers;
+
+import com.lorum.utils.ApiResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("{{path}}")
+@RequiredArgsConstructor
+public class {{pascalCase name}}Controller {
+
+    // Inject your services here
+
+    @GetMapping
+    public ResponseEntity<ApiResponse<Object>> getAll() {
+        // TODO: Implement
+        return ResponseEntity.ok(ApiResponse.success(null, "Retrieved successfully"));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponse<Object>> getById(@PathVariable Long id) {
+        // TODO: Implement
+        return ResponseEntity.ok(ApiResponse.success(null, "Retrieved successfully"));
+    }
+
+    @PostMapping
+    public ResponseEntity<ApiResponse<Object>> create(@RequestBody Object request) {
+        // TODO: Implement
+        return ResponseEntity.ok(ApiResponse.success(null, "Created successfully"));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<Object>> update(
+            @PathVariable Long id,
+            @RequestBody Object request
+    ) {
+        // TODO: Implement
+        return ResponseEntity.ok(ApiResponse.success(null, "Updated successfully"));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse<Object>> delete(@PathVariable Long id) {
+        // TODO: Implement
+        return ResponseEntity.ok(ApiResponse.success(null, "Deleted successfully"));
+    }
+}
